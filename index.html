@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assistance With More | Medical Assistance & Cost Containment</title>
+  <meta name="description" content="Assistance With More provides medical assistance, insurance support, invoice review, negotiation, and cost containment consulting.">
+
+  <style>
+    :root {
+      --ink: #243238;
+      --muted: #66757b;
+      --accent: #567a7d;
+      --accent-dark: #3f6265;
+      --cream: #f7f7f4;
+      --white: #ffffff;
+      --line: #e2e6e4;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: var(--ink);
+      background: var(--white);
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 48px));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255,255,255,.94);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(226,230,228,.85);
+    }
+
+    .nav {
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      font-size: 19px;
+      font-weight: 650;
+      letter-spacing: .01em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .nav-links a:hover { color: var(--ink); }
+
+    .hero {
+      background: var(--cream);
+      padding: 105px 0 115px;
+    }
+
+    .hero-inner {
+      max-width: 790px;
+    }
+
+    .eyebrow {
+      color: var(--accent-dark);
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      margin: 0 0 20px;
+      font-size: clamp(43px, 6vw, 70px);
+      line-height: 1.06;
+      letter-spacing: -.035em;
+      font-weight: 650;
+    }
+
+    .hero h2 {
+      margin: 0 0 24px;
+      font-size: clamp(21px, 3vw, 28px);
+      font-weight: 450;
+      color: var(--accent-dark);
+    }
+
+    .hero p {
+      max-width: 720px;
+      font-size: 19px;
+      color: var(--muted);
+      margin: 0 0 32px;
+    }
+
+    .button {
+      display: inline-block;
+      background: var(--accent-dark);
+      color: white;
+      padding: 13px 23px;
+      border-radius: 3px;
+      font-size: 14px;
+      font-weight: 600;
+      transition: background .2s ease, transform .2s ease;
+    }
+
+    .button:hover {
+      background: var(--ink);
+      transform: translateY(-1px);
+    }
+
+    section {
+      padding: 92px 0;
+    }
+
+    .section-heading {
+      max-width: 690px;
+      margin-bottom: 46px;
+    }
+
+    .section-heading h2 {
+      margin: 0 0 14px;
+      font-size: 36px;
+      line-height: 1.15;
+      letter-spacing: -.025em;
+      font-weight: 600;
+    }
+
+    .section-heading p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .services {
+      background: white;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+
+    .service {
+      background: white;
+      padding: 34px 31px 36px;
+    }
+
+    .service h3 {
+      margin: 0 0 14px;
+      font-size: 21px;
+      font-weight: 600;
+    }
+
+    .service p {
+      color: var(--muted);
+      margin: 0 0 18px;
+      font-size: 15px;
+    }
+
+    .service ul {
+      margin: 0;
+      padding-left: 19px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .service li { margin: 7px 0; }
+
+    .approach {
+      background: var(--cream);
+    }
+
+    .approach-content {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 90px;
+      align-items: start;
+    }
+
+    .approach h2 {
+      margin: 0;
+      font-size: 38px;
+      line-height: 1.15;
+      letter-spacing: -.025em;
+      font-weight: 600;
+    }
+
+    .approach-copy p {
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .about {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .about-content {
+      max-width: 780px;
+    }
+
+    .about-content p {
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .contact {
+      background: var(--accent-dark);
+      color: white;
+    }
+
+    .contact .section-heading {
+      margin-bottom: 28px;
+    }
+
+    .contact .section-heading p {
+      color: rgba(255,255,255,.76);
+    }
+
+    .contact .button {
+      background: white;
+      color: var(--accent-dark);
+    }
+
+    .contact .button:hover {
+      background: var(--cream);
+    }
+
+    footer {
+      background: var(--accent-dark);
+      border-top: 1px solid rgba(255,255,255,.15);
+      color: rgba(255,255,255,.65);
+      padding: 25px 0;
+      font-size: 13px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    @media (max-width: 800px) {
+      .nav-links { gap: 15px; }
+      .service-grid { grid-template-columns: 1fr; }
+      .approach-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+      section { padding: 70px 0; }
+      .hero { padding: 78px 0 85px; }
+    }
+
+    @media (max-width: 560px) {
+      .container { width: min(100% - 32px, 1120px); }
+      .nav { height: 68px; }
+      .brand { font-size: 17px; }
+      .nav-links a:not(:last-child) { display: none; }
+      .footer-inner { flex-direction: column; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="container nav">
+      <a href="#top" class="brand">Assistance With More</a>
+      <nav class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#approach">Approach</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="eyebrow">Medical Assistance & Cost Containment</div>
+        <h1>Assistance With More</h1>
+        <h2>Medical assistance, insurance support, and practical solutions.</h2>
+        <p>
+          Providing specialized consulting services for complex medical and insurance matters,
+          including international medical assistance, invoice review, negotiation, and cost containment.
+        </p>
+        <a class="button" href="#contact">Contact Us</a>
+      </div>
+    </section>
+
+    <section class="services" id="services">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Services</h2>
+          <p>
+            Practical support for medical and insurance matters that require experience,
+            careful review, and thoughtful resolution.
+          </p>
+        </div>
+
+        <div class="service-grid">
+
+          <div class="service">
+            <h3>Medical Assistance</h3>
+            <p>
+              Support with the coordination and management of medical care, particularly
+              when treatment involves international travelers, healthcare providers, or insurance organizations.
+            </p>
+            <ul>
+              <li>International medical assistance and coordination</li>
+              <li>Support for travelers receiving medical care</li>
+              <li>Communication between patients, providers, and insurers</li>
+              <li>Medical documentation and case coordination</li>
+              <li>Assistance navigating complex healthcare situations</li>
+            </ul>
+          </div>
+
+          <div class="service">
+            <h3>Cost Containment</h3>
+            <p>
+              Independent review and negotiation designed to identify reasonable and appropriate
+              opportunities to manage medical costs.
+            </p>
+            <ul>
+              <li>Medical invoice and bill review</li>
+              <li>Identification of billing discrepancies or potential savings</li>
+              <li>Provider invoice negotiation</li>
+              <li>Cost analysis and benchmarking</li>
+              <li>Negotiation and resolution of outstanding medical charges</li>
+            </ul>
+          </div>
+
+          <div class="service">
+            <h3>Consulting & Advisory</h3>
+            <p>
+              Practical, case-specific support for organizations and individuals navigating
+              complicated medical and insurance matters.
+            </p>
+            <ul>
+              <li>Medical and insurance consulting</li>
+              <li>Case-specific research and analysis</li>
+              <li>Strategic guidance and problem-solving</li>
+              <li>Stakeholder communication and coordination</li>
+              <li>Support toward efficient, appropriate outcomes</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="approach" id="approach">
+      <div class="container approach-content">
+        <h2>Experienced.<br>Practical.<br>Responsive.</h2>
+
+        <div class="approach-copy">
+          <p>
+            Medical and insurance matters can become complicated quickly. Assistance With More
+            provides knowledgeable, hands-on support to help clients understand the situation,
+            identify options, and move toward resolution.
+          </p>
+          <p>
+            Our work is tailored to each case. Whether coordinating care, reviewing an invoice,
+            communicating with a provider, or negotiating medical costs, we focus on practical
+            solutions and clear communication.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Specialized Support.<br>Individual Attention.</h2>
+        </div>
+
+        <div class="about-content">
+          <p>
+            Assistance With More provides consulting and advisory services within the medical
+            assistance and cost containment field.
+          </p>
+          <p>
+            We support clients with complex medical and insurance matters, with particular
+            experience involving international medical care, provider charges, insurance
+            coordination, and medical cost review.
+          </p>
+          <p>
+            Our goal is straightforward: provide knowledgeable assistance, reduce unnecessary
+            complexity, and help achieve appropriate outcomes.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Let's Discuss Your Needs</h2>
+          <p>
+            If you have a medical assistance, insurance, invoice review, negotiation,
+            or cost containment matter you'd like to discuss, we'd be happy to learn more.
+          </p>
+        </div>
+
+        <!-- CHANGE THIS EMAIL ADDRESS -->
+        <a class="button" href="mailto:YOUR_EMAIL@example.com">Contact Us</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>© 2026 Assistance With More</div>
+      <div>Medical Assistance & Cost Containment</div>
+    </div>
+  </footer>
+
+</body>
+</html>
