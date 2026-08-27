@@ -1,421 +1,539 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Assistance With More | Medical Assistance & Cost Containment</title>
-  <meta name="description" content="Assistance With More provides medical assistance, insurance support, invoice review, negotiation, and cost containment consulting.">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assistance With More</title>
+    <style>
+        /* Base Reset & Variables */
+        :root {
+            --color-primary-dark: #0b2545;
+            --color-primary: #134074;
+            --color-secondary: #00b4d8;
+            --color-accent: #1f7a8c;
+            --color-bg-light: #f4f7fa;
+            --color-text: #1d2a44;
+            --color-white: #ffffff;
+            --font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            --shadow-subtle: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --transition: all 0.3s ease;
+        }
 
-  <style>
-    :root {
-      --ink: #243238;
-      --muted: #66757b;
-      --accent: #567a7d;
-      --accent-dark: #3f6265;
-      --cream: #f7f7f4;
-      --white: #ffffff;
-      --line: #e2e6e4;
-    }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-    * { box-sizing: border-box; }
+        html {
+            scroll-behavior: smooth;
+        }
 
-    html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-family);
+            color: var(--color-text);
+            line-height: 1.6;
+            background-color: var(--color-bg-light);
+        }
 
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      color: var(--ink);
-      background: var(--white);
-      line-height: 1.7;
-    }
+        /* Container Layout */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+        /* Navigation Bar */
+        header {
+            background-color: var(--color-white);
+            box-shadow: var(--shadow-subtle);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
 
-    .container {
-      width: min(1120px, calc(100% - 48px));
-      margin: 0 auto;
-    }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
 
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: rgba(255,255,255,.94);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(226,230,228,.85);
-    }
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
 
-    .nav {
-      height: 76px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
+        .logo img {
+            height: 55px;
+            width: auto;
+            display: block;
+        }
 
-    .brand {
-      font-size: 19px;
-      font-weight: 650;
-      letter-spacing: .01em;
-    }
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+        }
 
-    .nav-links {
-      display: flex;
-      gap: 30px;
-      font-size: 14px;
-      color: var(--muted);
-    }
+        nav a {
+            text-decoration: none;
+            color: var(--color-primary-dark);
+            font-weight: 600;
+            font-size: 15px;
+            transition: var(--transition);
+        }
 
-    .nav-links a:hover { color: var(--ink); }
+        nav a:hover {
+            color: var(--color-secondary);
+        }
 
-    .hero {
-      background: var(--cream);
-      padding: 105px 0 115px;
-    }
+        .nav-btn {
+            background-color: var(--color-primary);
+            color: var(--color-white) !important;
+            padding: 10px 20px;
+            border-radius: 6px;
+            transition: var(--transition);
+        }
 
-    .hero-inner {
-      max-width: 790px;
-    }
+        .nav-btn:hover {
+            background-color: var(--color-secondary);
+        }
 
-    .eyebrow {
-      color: var(--accent-dark);
-      text-transform: uppercase;
-      letter-spacing: .16em;
-      font-size: 12px;
-      font-weight: 700;
-      margin-bottom: 18px;
-    }
+        /* Hero Section */
+        .hero {
+            background-color: var(--color-white);
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
 
-    h1 {
-      margin: 0 0 20px;
-      font-size: clamp(43px, 6vw, 70px);
-      line-height: 1.06;
-      letter-spacing: -.035em;
-      font-weight: 650;
-    }
+        .hero-layout {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 48px;
+            align-items: center;
+        }
 
-    .hero h2 {
-      margin: 0 0 24px;
-      font-size: clamp(21px, 3vw, 28px);
-      font-weight: 450;
-      color: var(--accent-dark);
-    }
+        .hero-content h1 {
+            font-size: 42px;
+            font-weight: 800;
+            color: var(--color-primary-dark);
+            line-height: 1.2;
+            margin-bottom: 18px;
+        }
 
-    .hero p {
-      max-width: 720px;
-      font-size: 19px;
-      color: var(--muted);
-      margin: 0 0 32px;
-    }
+        .hero-lead {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--color-accent);
+            margin-bottom: 24px;
+            line-height: 1.4;
+        }
 
-    .button {
-      display: inline-block;
-      background: var(--accent-dark);
-      color: white;
-      padding: 13px 23px;
-      border-radius: 3px;
-      font-size: 14px;
-      font-weight: 600;
-      transition: background .2s ease, transform .2s ease;
-    }
+        .hero-text {
+            font-size: 16px;
+            color: #4a5568;
+            margin-bottom: 30px;
+        }
 
-    .button:hover {
-      background: var(--ink);
-      transform: translateY(-1px);
-    }
+        .hero-cta-wrapper {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
 
-    section {
-      padding: 92px 0;
-    }
+        .btn-primary {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+            color: var(--color-white);
+            text-decoration: none;
+            padding: 14px 28px;
+            border-radius: 6px;
+            font-weight: 700;
+            box-shadow: 0 4px 10px rgba(19, 64, 116, 0.2);
+            transition: var(--transition);
+        }
 
-    .section-heading {
-      max-width: 690px;
-      margin-bottom: 46px;
-    }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(19, 64, 116, 0.3);
+        }
 
-    .section-heading h2 {
-      margin: 0 0 14px;
-      font-size: 36px;
-      line-height: 1.15;
-      letter-spacing: -.025em;
-      font-weight: 600;
-    }
+        /* Local Support Highlight Block */
+        .support-banner {
+            background-color: var(--color-bg-light);
+            border-left: 4px solid var(--color-secondary);
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+            font-size: 14px;
+            color: var(--color-primary-dark);
+            font-weight: 500;
+            margin-top: 32px;
+        }
 
-    .section-heading p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 17px;
-    }
+        .hero-graphic {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-    .services {
-      background: white;
-    }
+        .hero-graphic img {
+            width: 100%;
+            max-width: 420px;
+            height: auto;
+            display: block;
+        }
 
-    .service-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: var(--line);
-      border: 1px solid var(--line);
-    }
+        /* Services Section */
+        .services-section {
+            padding: 90px 0;
+            background-color: var(--color-bg-light);
+        }
 
-    .service {
-      background: white;
-      padding: 34px 31px 36px;
-    }
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
 
-    .service h3 {
-      margin: 0 0 14px;
-      font-size: 21px;
-      font-weight: 600;
-    }
+        .section-header h2 {
+            font-size: 32px;
+            color: var(--color-primary-dark);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 12px;
+        }
 
-    .service p {
-      color: var(--muted);
-      margin: 0 0 18px;
-      font-size: 15px;
-    }
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background-color: var(--color-secondary);
+            border-radius: 2px;
+        }
 
-    .service ul {
-      margin: 0;
-      padding-left: 19px;
-      color: var(--muted);
-      font-size: 14px;
-    }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 30px;
+        }
 
-    .service li { margin: 7px 0; }
+        .service-card {
+            background-color: var(--color-white);
+            border-radius: 8px;
+            padding: 32px;
+            box-shadow: var(--shadow-subtle);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            border-top: 4px solid transparent;
+        }
 
-    .approach {
-      background: var(--cream);
-    }
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+            border-top-color: var(--color-secondary);
+        }
 
-    .approach-content {
-      display: grid;
-      grid-template-columns: .8fr 1.2fr;
-      gap: 90px;
-      align-items: start;
-    }
+        .service-card h3 {
+            font-size: 20px;
+            color: var(--color-primary-dark);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-    .approach h2 {
-      margin: 0;
-      font-size: 38px;
-      line-height: 1.15;
-      letter-spacing: -.025em;
-      font-weight: 600;
-    }
+        .service-card p {
+            font-size: 14px;
+            color: #5a6578;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
 
-    .approach-copy p {
-      margin: 0 0 18px;
-      color: var(--muted);
-      font-size: 17px;
-    }
+        .service-features {
+            list-style: none;
+            background-color: var(--color-bg-light);
+            padding: 16px;
+            border-radius: 6px;
+        }
 
-    .about {
-      border-bottom: 1px solid var(--line);
-    }
+        .service-features li {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--color-primary-dark);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
 
-    .about-content {
-      max-width: 780px;
-    }
+        .service-features li:last-child {
+            margin-bottom: 0;
+        }
 
-    .about-content p {
-      color: var(--muted);
-      font-size: 17px;
-    }
+        .service-features li::before {
+            content: "✓";
+            color: var(--color-secondary);
+            font-weight: bold;
+        }
 
-    .contact {
-      background: var(--accent-dark);
-      color: white;
-    }
+        .experience-highlight {
+            font-style: italic;
+            border-top: 1px dashed rgba(0, 0, 0, 0.1);
+            padding-top: 12px;
+            margin-top: 12px;
+            font-size: 13px;
+            color: var(--color-accent);
+        }
 
-    .contact .section-heading {
-      margin-bottom: 28px;
-    }
+        /* Contact Section */
+        .contact-section {
+            padding: 90px 0;
+            background-color: var(--color-white);
+        }
 
-    .contact .section-heading p {
-      color: rgba(255,255,255,.76);
-    }
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: start;
+        }
 
-    .contact .button {
-      background: white;
-      color: var(--accent-dark);
-    }
+        .contact-info h2 {
+            font-size: 32px;
+            color: var(--color-primary-dark);
+            margin-bottom: 18px;
+        }
 
-    .contact .button:hover {
-      background: var(--cream);
-    }
+        .contact-info p {
+            font-size: 16px;
+            color: #4a5568;
+            margin-bottom: 24px;
+        }
 
-    footer {
-      background: var(--accent-dark);
-      border-top: 1px solid rgba(255,255,255,.15);
-      color: rgba(255,255,255,.65);
-      padding: 25px 0;
-      font-size: 13px;
-    }
+        .contact-statement {
+            font-weight: 700;
+            color: var(--color-primary);
+            font-size: 18px;
+            border-left: 3px solid var(--color-secondary);
+            padding-left: 16px;
+            margin-bottom: 30px;
+        }
 
-    .footer-inner {
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-    }
+        .contact-form-container {
+            background-color: var(--color-bg-light);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: var(--shadow-subtle);
+        }
 
-    @media (max-width: 800px) {
-      .nav-links { gap: 15px; }
-      .service-grid { grid-template-columns: 1fr; }
-      .approach-content {
-        grid-template-columns: 1fr;
-        gap: 30px;
-      }
-      section { padding: 70px 0; }
-      .hero { padding: 78px 0 85px; }
-    }
+        .form-group {
+            margin-bottom: 20px;
+        }
 
-    @media (max-width: 560px) {
-      .container { width: min(100% - 32px, 1120px); }
-      .nav { height: 68px; }
-      .brand { font-size: 17px; }
-      .nav-links a:not(:last-child) { display: none; }
-      .footer-inner { flex-direction: column; }
-    }
-  </style>
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--color-primary-dark);
+            margin-bottom: 6px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-family: var(--font-family);
+            font-size: 14px;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--color-secondary);
+            box-shadow: 0 0 0 3px rgba(0, 180, 216, 0.15);
+        }
+
+        .form-btn {
+            width: 100%;
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            border: none;
+            padding: 14px;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .form-btn:hover {
+            background-color: var(--color-secondary);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--color-primary-dark);
+            color: var(--color-white);
+            padding: 40px 0;
+            font-size: 14px;
+            text-align: center;
+            border-top: 4px solid var(--color-secondary);
+        }
+
+        footer p {
+            opacity: 0.8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-layout, .contact-layout {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .hero-graphic {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+            .hero-content h1 {
+                font-size: 32px;
+            }
+            .hero-lead {
+                font-size: 18px;
+            }
+        }
+    </style>
 </head>
-
 <body>
 
-  <header>
-    <div class="container nav">
-      <a href="#top" class="brand">Assistance With More</a>
-      <nav class="nav-links">
-        <a href="#services">Services</a>
-        <a href="#approach">Approach</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
-  </header>
-
-  <main id="top">
-
-    <section class="hero">
-      <div class="container hero-inner">
-        <div class="eyebrow">Medical Assistance & Cost Containment</div>
-        <h1>Assistance With More</h1>
-        <h2>Medical assistance, insurance support, and practical solutions.</h2>
-        <p>
-          Providing specialized consulting services for complex medical and insurance matters,
-          including international medical assistance, invoice review, negotiation, and cost containment.
-        </p>
-        <a class="button" href="#contact">Contact Us</a>
-      </div>
-    </section>
-
-    <section class="services" id="services">
-      <div class="container">
-        <div class="section-heading">
-          <h2>Services</h2>
-          <p>
-            Practical support for medical and insurance matters that require experience,
-            careful review, and thoughtful resolution.
-          </p>
+    <!-- Header Navigation -->
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <!-- Links to your local logo file -->
+                <img src="awm-logo.png" alt="Assistance With More Logo">
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact" class="nav-btn">Contact Us</a></li>
+                </ul>
+            </nav>
         </div>
+    </header>
 
-        <div class="service-grid">
+    <main>
+        <!-- Home / Hero Section -->
+        <section class="hero">
+            <div class="container hero-layout">
+                <div class="hero-content">
+                    <h1>Assistance With More</h1>
+                    <p class="hero-lead">Specialized consulting services in medical assistance, insurance support, invoice review, negotiation, and cost containment.</p>
+                    <p class="hero-text">Working with an established network of companies, medical professionals and combining industry knowledge, AWM helps to connect global assistance companies with local services, logistics and finalise insurance claims with positive financial outcomes.</p>
+                    <div class="hero-cta-wrapper">
+                    </div>
+                </div>
+                <div class="hero-graphic">
+                    <!-- Dynamic display of your exact logo on the right of the hero banner -->
+                    <img src="awm-logo.png" alt="Assistance With More Logo">
+                </div>
+            </div>
+        </section>
 
-          <div class="service">
-            <h3>Medical Assistance</h3>
-            <p>
-              Support with the coordination and management of medical care, particularly
-              when treatment involves international travelers, healthcare providers, or insurance organizations.
-            </p>
-            <ul>
-              <li>International medical assistance and coordination</li>
-              <li>Support for travelers receiving medical care</li>
-              <li>Communication between patients, providers, and insurers</li>
-              <li>Medical documentation and case coordination</li>
-              <li>Assistance navigating complex healthcare situations</li>
-            </ul>
-          </div>
+        <!-- Services Section -->
+        <section id="services" class="services-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Our Services</h2>
+                </div>
+                <div class="services-grid">
+                    
+                    <!-- Service 1: Medical Information -->
+                    <div class="service-card">
+                        <h3>Assistance With: Medical Information</h3>
+                        <p>Support with contact in the public and private sector for international travellers, admitted or seeking treatment covered privately or by their policy.</p>
+                        <ul class="service-features">
+                            <li>Hospital Contact</li>
+                            <li>Medical report receipt and delivery</li>
+                            <li>Local network and cashless billing access</li>
+                        </ul>
+                    </div>
 
-          <div class="service">
-            <h3>Cost Containment</h3>
-            <p>
-              Independent review and negotiation designed to identify reasonable and appropriate
-              opportunities to manage medical costs.
-            </p>
-            <ul>
-              <li>Medical invoice and bill review</li>
-              <li>Identification of billing discrepancies or potential savings</li>
-              <li>Provider invoice negotiation</li>
-              <li>Cost analysis and benchmarking</li>
-              <li>Negotiation and resolution of outstanding medical charges</li>
-            </ul>
-          </div>
+                    <!-- Service 2: Medical Appointments -->
+                    <div class="service-card">
+                        <h3>Assistance With: Medical Appointments</h3>
+                        <p>Support with coordination of outpatient care for international travellers seeking treatment covered privately or by their policy.</p>
+                        <ul class="service-features">
+                            <li>Appointment organisation</li>
+                            <li>Medical report receipt and delivery</li>
+                            <li>Cashless billing access</li>
+                        </ul>
+                    </div>
 
-          <div class="service">
-            <h3>Consulting & Advisory</h3>
-            <p>
-              Practical, case-specific support for organizations and individuals navigating
-              complicated medical and insurance matters.
-            </p>
-            <ul>
-              <li>Medical and insurance consulting</li>
-              <li>Case-specific research and analysis</li>
-              <li>Strategic guidance and problem-solving</li>
-              <li>Stakeholder communication and coordination</li>
-              <li>Support toward efficient, appropriate outcomes</li>
-            </ul>
-          </div>
+                    <!-- Service 3: Logistics -->
+                    <div class="service-card">
+                        <h3>Assistance With: Logistics</h3>
+                        <p>Support with transport including taxis and ground ambulance patient transport services.</p>
+                        <ul class="service-features">
+                            <li>Liaison with local supplier directly</li>
+                            <li>Transport organisation with local supplier</li>
+                            <li>Payment for, or organisation of payment terms directly with traveller</li>
+                        </ul>
+                    </div>
 
-        </div>
-      </div>
-    </section>
+                    <!-- Service 4: Cost Containment -->
+                    <div class="service-card">
+                        <h3>Assistance With: Cost Containment</h3>
+                        <p>Independent review and negotiation designed to identify reasonable and appropriate opportunities to manage medical costs.</p>
+                        <ul class="service-features">
+                            <li>Medical invoice and bill review</li>
+                            <li>Identification of billing discrepancies or potential savings</li>
+                            <li>Provider invoice negotiation</li>
+                            <li>Cost analysis and benchmarking</li>
+                            <li>Negotiation and resolution of outstanding medical charges</li>
+                        </ul>
+                    </div>
 
-    <section class="approach" id="approach">
-      <div class="container approach-content">
-        <h2>Experienced.<br>Practical.<br>Responsive.</h2>
+                    <!-- Service 5: Network Advice -->
+                    <div class="service-card">
+                        <h3>Assistance With: Network Advice</h3>
+                        <p>Practical, case-specific support for pre-deployment advice and guidance in specific locations including in-person audit and local resource information.</p>
+                        <ul class="service-features">
+                            <li>Third Party recommendations</li>
+                            <li>Analysis and information on network access in third party country or location</li>
+                        </ul>
+                    </div>
 
-        <div class="approach-copy">
-          <p>
-            Medical and insurance matters can become complicated quickly. Assistance With More
-            provides knowledgeable, hands-on support to help clients understand the situation,
-            identify options, and move toward resolution.
-          </p>
-          <p>
-            Our work is tailored to each case. Whether coordinating care, reviewing an invoice,
-            communicating with a provider, or negotiating medical costs, we focus on practical
-            solutions and clear communication.
-          </p>
-        </div>
-      </div>
-    </section>
+                    <!-- Service 6: Experience -->
+                    <div class="service-card">
+                        <h3>Assistance With: Experience</h3>
+                        <p>Medical and insurance matters can become complicated quickly. Assistance With More provides knowledgeable, hands-on support to help clients understand the situation, identify options, and move toward resolution.</p>
+                        <div class="experience-highlight">
+                            Like all medical assistance work, solutions are tailored to each case. Whether coordinating care, reviewing an invoice, communicating with a provider, or negotiating medical costs, the focus is practical solution and clear communication.
+                        </div>
+                    </div>
 
-    <section class="about" id="about">
-      <div class="container">
-        <div class="section-heading">
-          <h2>Specialized Support.<br>Individual Attention.</h2>
-        </div>
+                </div>
+            </div>
+        </section>
 
-        <div class="about-content">
-          <p>
-            Assistance With More provides consulting and advisory services within the medical
-            assistance and cost containment field.
-          </p>
-          <p>
-            We support clients with complex medical and insurance matters, with particular
-            experience involving international medical care, provider charges, insurance
-            coordination, and medical cost review.
-          </p>
-          <p>
-            Our goal is straightforward: provide knowledgeable assistance, reduce unnecessary
-            complexity, and help achieve appropriate outcomes.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="contact" id="contact">
+<section class="contact" id="contact">
       <div class="container">
         <div class="section-heading">
           <h2>Let's Discuss Your Needs</h2>
@@ -429,14 +547,12 @@
       </div>
     </section>
 
-  </main>
-
-  <footer>
-    <div class="container footer-inner">
-      <div>© 2026 Assistance With More</div>
-      <div>Medical Assistance & Cost Containment</div>
-    </div>
-  </footer>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Assistance With More (AWM). All rights reserved.</p>
+        </div>
+    </footer>
 
 </body>
 </html>
